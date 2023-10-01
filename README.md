@@ -18,4 +18,4 @@
 ## Extension
 
 To use the extension, download it from the link below:
-[Extension release link]()
+[Extension release link](https://drive.google.com/file/d/1Y-HsQ2kydMVYzpnypT_XipN57LVY6Eda/view?usp=sharing)
