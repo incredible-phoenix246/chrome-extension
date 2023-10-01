@@ -1,0 +1,42 @@
+{
+  "name": "HelpMeOut",
+  "description": "This extension helps you record and share help videos with ease.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "icons": {
+    "128": "./assets/images/logos/logo.png"
+  },
+  "action": {
+    "default_icon": "./assets/images/logos/logo.png"
+  },
+  "author": "Phoenix E-mail: ayomikuntemitope.araoye@gmail.com",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["main.css"],
+      "run_at": "document_start"
+    }
+  ],
+  "permissions": ["activeTab", "tabs", "storage", "scripting", "tabCapture"],
+  "host_permissions": ["<all_urls>"],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "index.html",
+        "assets/images/logos/logo-2.png",
+        "assets/images/logos/logo.png",
+        "assets/fonts/Poppins-Bold.ttf",
+        "assets/fonts/Poppins-Regular.ttf",
+        "assets/fonts/Poppins-SemiBold.ttf"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  }
+}

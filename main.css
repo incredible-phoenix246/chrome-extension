@@ -1,0 +1,704 @@
+:root {
+  --hmo-width: 380px;
+  --hmo-white-100: #fff;
+  --hmo-gray-100: #b6b3c6;
+  --hmo-gray-200: #bebebe;
+  --hmo-green-100: #348452;
+  --hmo-green-200: #5de09e;
+  --hmo-green-300: #60e2a3;
+  --hmo-dark-100: #26242b;
+  --hmo-dark-105: #000;
+  --hmo-dark-200: #444;
+  --hmo-red-100: #ff0000;
+  --hmo-red-200: #ff4741;
+  --hmo-blue-100: #120b48;
+  --hmo-blue-200: #413c6d;
+}
+
+@font-face {
+  font-family: ppReg;
+  src: url("chrome-extension://__MSG_@@extension_id__/assets/fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: ppB;
+  src: url("chrome-extension://__MSG_@@extension_id__/assets/fonts/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: ppSB;
+  src: url("chrome-extension://__MSG_@@extension_id__/assets/fonts/Poppins-SemiBold.ttf");
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.hmo-d-flex {
+  display: flex;
+}
+
+.hmo-d-flex {
+  display: flex;
+}
+
+.ppReg {
+  font-family: ppReg;
+}
+
+.ppB {
+  font-family: ppB;
+}
+
+.ppSB {
+  font-family: ppSB;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.hmo-spinner-border {
+  animation-duration: 0.5s;
+}
+
+.help-me-iframe-container {
+  z-index: 999999999999999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+
+.help-me-iframe-container.show {
+  display: flex;
+}
+
+.help-me-iframe-container.hide {
+  display: none;
+}
+
+.help-me-container {
+  /* width: 0px; */
+  min-width: 0px;
+  height: 100vh;
+  position: relative;
+  padding: 0px;
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+}
+.help-me-container.show {
+  display: flex;
+}
+
+/* help me recording component */
+.help-me-record-comp {
+  width: 300px;
+  max-height: 459px;
+  height: auto;
+  background: var(--hmo-white-100);
+  border-radius: 24px;
+  box-shadow: 0px 0px 20px #0000002c;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding-bottom: 10px;
+}
+
+.help-me-record-comp.hide {
+  display: none;
+}
+
+.help-me-record-comp.show {
+  display: block;
+}
+
+.help-me-record-comp .heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: auto;
+  gap: 15px;
+  padding: 15px 20px;
+}
+
+.help-me-record-comp .hmo-error-component {
+  position: absolute;
+  max-width: 350px;
+  width: auto;
+  margin: 0px auto;
+  position: fixed;
+  top: -10em;
+  right: 30em;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 13px;
+  transition: all 0.2s ease-in-out;
+  background: #000;
+  font-family: ppSB;
+}
+
+.help-me-record-comp .hmo-error-component.show {
+  top: 4em;
+  transition: all 0.2s ease-in-out;
+}
+
+.help-me-record-comp .hmo-error-component.error {
+  background: var(--hmo-red-200);
+  color: #fff;
+  font-family: ppSB;
+}
+.help-me-record-comp .hmo-error-component.success {
+  background: var(--hmo-green-200);
+  color: #000;
+  font-family: ppSB;
+}
+
+.help-me-record-comp .heading .top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: auto;
+  margin: 0px;
+}
+
+.help-me-record-comp .heading .top img {
+  width: 120px;
+}
+
+.help-me-record-comp .heading .top button {
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.help-me-record-comp .heading .top button .icon {
+  transform: scale(0.8);
+}
+
+.help-me-record-comp .heading .top button .help-me-close-icon {
+  width: 30px;
+  height: auto;
+  fill: var(--hmo-gray-100);
+  transition: 0.2s ease-in;
+  cursor: pointer;
+}
+
+.help-me-record-comp .heading .top button .help-me-close-icon:hover {
+  fill: var(--hmo-red-200);
+}
+
+.help-me-record-comp .heading .bottom p {
+  color: var(--hmo-blue-200);
+  font-size: 13px;
+  font-weight: 100;
+}
+
+/* Recording Controls */
+.help-me-record-comp .help-me-controls {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 2.1em;
+  gap: 20px;
+}
+
+/* Camera Control Style */
+.help-me-record-comp .help-me-controls .help-me-camera-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.4px solid var(--hmo-blue-100);
+  padding: 10px 15px;
+  border-radius: 12px;
+}
+
+.help-me-record-comp .help-me-controls .help-me-camera-control .left {
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.help-me-record-comp .help-me-controls .help-me-camera-control .left span {
+  font-size: 13px;
+}
+
+.help-me-record-comp .help-me-controls .left span {
+  color: var(--hmo-blue-100);
+}
+
+.help-me-record-comp .help-me-controls .help-me-camera-control .left .icon {
+  width: 30px;
+  height: auto;
+  color: var(--hmo-blue-100);
+}
+
+/* Audio Control Style */
+.help-me-record-comp .help-me-controls .help-me-audio-control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1.4px solid var(--hmo-blue-100);
+  padding: 10px 15px;
+  border-radius: 12px;
+}
+
+.help-me-record-comp .help-me-controls .help-me-audio-control .left {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.help-me-record-comp .help-me-controls .help-me-audio-control .left span {
+  font-size: 13px;
+}
+
+.help-me-record-comp .help-me-controls .help-me-audio-control .left .icon {
+  width: 30px;
+  height: auto;
+}
+
+/* Screen Selection */
+.help-me-record-comp .screen-selection {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.help-me-record-comp .screen-selection button {
+  outline: none;
+  border: none;
+  padding: 10px;
+  background: none;
+  opacity: 0.3;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.help-me-record-comp .screen-selection button.active {
+  opacity: 1;
+  font-weight: 900;
+  font-family: ppSB;
+}
+
+.help-me-record-comp .screen-selection button .icon {
+  width: 100px;
+  height: 30px;
+}
+
+/* Control Switch */
+
+.help-me-record-comp .help-me-controls .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 30px;
+}
+
+/* Hide default HTML checkbox */
+.help-me-record-comp .help-me-controls .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.help-me-record-comp .help-me-controls .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  border-radius: 30px;
+}
+
+.help-me-record-comp .help-me-controls .slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.help-me-record-comp .help-me-controls input:checked + .slider {
+  background-color: var(--hmo-blue-100);
+}
+
+.help-me-record-comp .help-me-controls input:not(:checked) + .slider {
+  background-color: #ccc;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.help-me-record-comp .help-me-controls .help-me-camera-control .slider.round {
+  border-radius: 34px;
+}
+
+.help-me-record-comp .help-me-controls .slider.round:before {
+  border-radius: 50%;
+}
+
+/* Start Recording Button */
+.help-me-record-comp .help-me-start-record-btn {
+  min-width: 115%;
+  background: var(--hmo-blue-100);
+  padding: 12px 20px;
+  color: var(--hmo-white-100);
+  border-radius: 12px;
+  transition: 0.2s ease-in-out;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border: 4px solid transparent;
+}
+
+.help-me-record-comp .help-me-start-record-btn:hover {
+  background: var(--hmo-blue-200);
+  color: #fff;
+}
+
+.help-me-record-comp .help-me-start-record-btn:focus {
+  border: 4px solid var(--hmo-gray-100);
+}
+
+.help-me-record-comp .help-me-start-record-btn.disabled {
+  cursor: not-allowed;
+  background: var(--hmo-gray-100);
+}
+
+/* Bubble controls */
+.help-me-bubble-control {
+  width: auto;
+  max-height: 100px;
+  position: fixed;
+  bottom: 2em;
+  left: 2em;
+  padding: 10px;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.help-me-bubble-control.hide {
+  display: none;
+}
+
+.help-me-bubble-control.show {
+  display: flex;
+}
+
+.help-me-bubble-control .left .hmo-avatar-img {
+  width: 158px;
+  height: 158px;
+  background: var(--hmo-dark-200);
+  border: 0px solid transparent;
+  border-radius: 50%;
+  user-select: none;
+  cursor: move;
+  background-size: cover;
+}
+
+.help-me-bubble-control .left .hmo-avatar-img.hide,
+.help-me-bubble-control .left .hmo-user-video.hide {
+  display: none;
+}
+
+.help-me-bubble-control .left .hmo-avatar-img.show,
+.help-me-bubble-control .left .hmo-user-video.show {
+  display: block;
+}
+
+.help-me-bubble-control .left .hmo-user-video {
+  width: 158px;
+  height: 158px;
+  background: var(--hmo-dark-200);
+  border: 0px solid transparent;
+  border-radius: 50%;
+  user-select: none;
+  cursor: move;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.help-me-bubble-control .left .hmo-avatar-img.removed {
+  border: 4px solid var(--hmo-dark-200);
+  background: var(--hmo-dark-100);
+}
+
+.help-me-bubble-control .right {
+  width: auto;
+  padding: 10px 30px;
+  border: 8px solid var(--hmo-gray-200);
+  background: var(--hmo-dark-105);
+  border-radius: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  transform: scale(0.95);
+}
+
+/* Bubble Counter */
+.help-me-bubble-control .right .hmo-bubble-counter {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  min-width: 120px;
+  gap: 10px;
+  padding-right: 10px;
+  margin-right: 20px;
+  border-right-width: 2px;
+  border-right-color: #777;
+  border-right-style: solid;
+}
+
+.help-me-bubble-control .right .hmo-bubble-counter span.counter-txt {
+  color: #fff;
+}
+
+.help-me-bubble-control .right .hmo-bubble-counter .hmo-animate-pulse {
+  opacity: 0.2;
+}
+
+.help-me-bubble-control .right .hmo-bubble-counter .hmo-animate-pulse.started {
+  opacity: 1;
+}
+
+.help-me-bubble-control .right .bubble-media-controls {
+  display: flex;
+  align-items: center;
+  justify-items: flex-start;
+  flex-direction: row;
+  gap: 20px;
+  padding-right: 20px;
+}
+
+.help-me-bubble-control .right .bubble-media-controls .bubble-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.help-me-bubble-control .right .bubble-media-controls .bubble-controls button {
+  width: 44px;
+  height: 44px;
+  outline: none;
+  border: 3px solid transparent;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 4px;
+  transform: scale(0.95);
+  background: #fff;
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button
+  > .icon {
+  color: var(--hmo-blue-100);
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button.disabled {
+  background: var(--hmo-gray-200);
+  opacity: 0.7;
+  color: #fff;
+  user-select: none;
+  cursor: not-allowed;
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button.bubble-stop-btn
+  > .icon {
+  fill: var(--hmo-red-200);
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button:hover {
+  transform: scale(1);
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button:active {
+  border: 4px solid var(--hmo-dark-200);
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button:focus {
+  border: 4px solid var(--hmo-gray-200);
+}
+
+.help-me-bubble-control
+  .right
+  .bubble-media-controls
+  .bubble-controls
+  button.trash-btn {
+  background: var(--hmo-dark-200);
+}
+
+.help-me-bubble-control .right .bubble-media-controls .bubble-controls span {
+  color: var(--hmo-gray-100);
+  font-size: 12px;
+  /* display: none; */
+}
+
+.help-me-bubble-control .right .bubble-media-controls .bubble-controls .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Preview Video */
+.hmo-preview-video {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.hmo-preview-video.show {
+  display: flex;
+}
+
+.hmo-preview-video.hide {
+  display: none;
+}
+
+.hmo-preview-video .video-card {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-items: flex-start;
+  flex-direction: column;
+  margin: 0px auto;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.hmo-preview-video .video-card video {
+  width: 100%;
+  max-width: 600px;
+  /* height: 500px; */
+  border: 8px solid var(--hmo-gray-200);
+  border-radius: 20px;
+}
+
+.hmo-preview-video .video-card .video-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  gap: 10px;
+}
+
+.hmo-preview-video .video-card .video-footer button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 5px solid transparent;
+  color: #fff;
+}
+
+.hmo-preview-video .video-card .video-footer button .icon {
+  width: 30px;
+  height: 30px;
+  padding: 3px;
+  transform: scale(0.9);
+  fill: #fff;
+}
+
+.hmo-preview-video .video-card .video-footer button.cancel-btn {
+  background: var(--hmo-red-200);
+}
+
+.hmo-preview-video .video-card .video-footer button.save-btn {
+  background: var(--hmo-blue-100);
+}
+
+.hmo-preview-video .video-card .video-footer button.cancel-btn:active,
+.hmo-preview-video .video-card .video-footer button.cancel-btn:focus {
+  border: 5px solid rgba(224, 2, 2, 0.9);
+}
+
+.hmo-preview-video .video-card .video-footer button.save-btn:active,
+.hmo-preview-video .video-card .video-footer button.save-btn:focus {
+  border: 5px solid var(--hmo-blue-200);
+}
+
+@keyframes hmo-animate-pulse {
+  0% {
+    box-shadow: 0 0 0 0px rgba(224, 2, 2, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 10px rgba(255, 0, 0, 0);
+  }
+}
+
+.hmo-animate-pulse {
+  animation: hmo-animate-pulse 1s infinite;
+  width: 10px;
+  height: 10px;
+  background-color: var(--hmo-red-100);
+  border-radius: 50%;
+}
